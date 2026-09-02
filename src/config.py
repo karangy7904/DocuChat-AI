@@ -14,7 +14,7 @@ class Settings:
     embedding_model: str = os.getenv(
         "EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2"
     )
-    backend: str = os.getenv("GENERATOR_BACKEND", "extractive")
+    backend: str = os.getenv("GENERATOR_BACKEND", "transformers")
     top_k: int = int(os.getenv("TOP_K", "3"))
     adapter_path: Path = ROOT / "models" / "docuchat-lora"
 
