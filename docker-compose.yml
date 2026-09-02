@@ -1,0 +1,8 @@
+services:
+  docuchat:
+    build: .
+    ports:
+      - "7860:7860"
+    environment:
+      GENERATOR_BACKEND: extractive
+
