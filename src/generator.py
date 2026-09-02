@@ -80,4 +80,7 @@ class TransformersGenerator:
         inputs = self.tokenizer(prompt, return_tensors="pt").to(self.model.device)
         output = self.model.generate(**inputs, max_new_tokens=160, do_sample=False)
         tokens = output[0][inputs["input_ids"].shape[1] :]
-        return self.tokenizer.decode(tokens, skip_special_tokens=True).strip()
+        answer = self.tokenizer.decode(tokens,skip_special_tokens=True).strip()
+        if chunks and not re.search(r"\[Page \d+\]",answer):
+            answer = f"{answer} [Page {chunks[0].page}]"
+        return answer
