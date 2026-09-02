@@ -20,9 +20,11 @@ def main() -> None:
     answer = pipeline.ask("How many months does the warranty last?")
     assert "twelve months" in answer.text
     assert "[Page 3]" in answer.text
+    summary = pipeline.ask("Give me a very short summary")
+    assert "twelve months" in summary.text
+    assert "[Page 3]" in summary.text
     print("DocuChat dependency-light checks passed")
 
 
 if __name__ == "__main__":
     main()
-
